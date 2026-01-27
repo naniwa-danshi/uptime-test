@@ -3,70 +3,88 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="GitHub Pages uptime test site" />
-  <title>Uptime Test</title>
+  <title>なにわ男子 | Uptime Test</title>
   <style>
     :root{
       --bg:#0b1020; --card:#121a33; --text:#e7ecff; --muted:#a9b3d6;
-      --ok:#34d399; --warn:#fbbf24; --line:rgba(255,255,255,.08);
+      --pink:#fb7185; --blue:#60a5fa; --line:rgba(255,255,255,.10);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(52,211,153,.18), transparent 60%),
-                  radial-gradient(1000px 700px at 90% 30%, rgba(99,102,241,.18), transparent 55%),
-                  var(--bg);
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(1000px 650px at 15% 10%, rgba(251,113,133,.22), transparent 60%),
+        radial-gradient(900px 650px at 85% 25%, rgba(96,165,250,.20), transparent 55%),
+        var(--bg);
     }
     .wrap{max-width:980px;margin:0 auto;padding:28px 18px 42px}
     header{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
-    .title{display:flex;flex-direction:column;gap:6px}
     h1{margin:0;font-size:28px;letter-spacing:.2px}
-    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+    .sub{margin:6px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
-      background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.35);
-      color:var(--text); padding:8px 12px;border-radius:999px;font-size:13px
+      padding:8px 12px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      font-size:13px;
     }
-    .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(52,211,153,.15)}
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--blue));
+      box-shadow:0 0 0 4px rgba(251,113,133,.12);
+    }
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
     .card{
       grid-column:span 12;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       border:1px solid var(--line);
       border-radius:16px;
       padding:16px;
       box-shadow:0 12px 30px rgba(0,0,0,.22);
-      overflow:hidden;
     }
     @media (min-width:720px){
-      .card.half{grid-column:span 6}
-      .card.third{grid-column:span 4}
+      .half{grid-column:span 6}
+      .third{grid-column:span 4}
     }
-    .kvs{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0 0}
-    .kv{display:flex;justify-content:space-between;gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:rgba(0,0,0,.12)}
+    .kvs{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+    .kv{
+      display:flex;justify-content:space-between;gap:10px;
+      padding:10px 12px;border:1px solid var(--line);
+      border-radius:12px;background:rgba(0,0,0,.14)
+    }
     .kv b{font-weight:600}
-    code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px}
-    a{color:#c7d2fe;text-decoration:none}
-    a:hover{text-decoration:underline}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid rgba(251,113,133,.35);
+      background:rgba(251,113,133,.10);
+      padding:6px 10px;border-radius:999px;font-size:12.5px
+    }
     .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .btn{
       display:inline-flex;align-items:center;gap:8px;
-      padding:10px 12px;border-radius:12px;border:1px solid var(--line);
-      background:rgba(255,255,255,.04); color:var(--text)
+      padding:10px 12px;border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04); color:var(--text); text-decoration:none
     }
-    footer{margin-top:18px;color:var(--muted);font-size:12.5px}
+    .btn:hover{background:rgba(255,255,255,.07)}
+    a{color:#c7d2fe}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    footer{margin-top:18px;color:var(--muted);font-size:12.5px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="title">
-        <h1>Uptime Test</h1>
-        <p class="sub">監視通知の動作確認用（GitHub Pages）</p>
+      <div>
+        <h1>なにわ男子 | Uptime Test</h1>
+        <p class="sub">
+          これは監視通知の動作確認用ページです。表示できていれば到達できています。<br>
+          （ファンページ用途なら、ここに紹介文やリンク集を置けます）
+        </p>
       </div>
-      <div class="pill" id="statusPill" title="このページが表示できていれば到達できています">
+      <div class="pill" title="このページが表示できれば到達OKです">
         <span class="dot" aria-hidden="true"></span>
         <span><b>OK</b> - Reachable</span>
       </div>
@@ -74,52 +92,46 @@
 
     <section class="grid">
       <div class="card half">
-        <h2 style="margin:0 0 8px;font-size:16px;">現在の情報</h2>
+        <div class="badge">Member (テキスト例)</div>
         <div class="kvs">
           <div class="kv"><span>表示時刻</span><b class="mono" id="now">-</b></div>
           <div class="kv"><span>URL</span><b class="mono" id="url">-</b></div>
-          <div class="kv"><span>目的</span><b>到達性（HTTP）の確認</b></div>
+          <div class="kv"><span>メモ</span><b>この枠は自由に編集</b></div>
         </div>
       </div>
 
       <div class="card half">
-        <h2 style="margin:0 0 8px;font-size:16px;">操作メモ</h2>
-        <p style="margin:0;color:var(--muted);line-height:1.6;">
-          失敗通知を試すには、GitHub の <b>Settings → Pages</b> で <b>Unpublish</b> するか、
-          公開元 Branch を外して 404 を発生させます。復旧は Pages を再公開して再デプロイします。
+        <div class="badge">Links</div>
+        <p style="margin:10px 0 0;color:var(--muted);line-height:1.7;">
+          公式サイト・公式SNS・配信サービス等のリンクを置く場合は、<b>テキストリンク</b>が安全です。
+          （画像や歌詞の転載は禁止貼付は避けてください）
         </p>
         <div class="btns">
-          <a class="btn" href="https://github.com/naniwa-danshi/uptime-test" target="_blank" rel="noreferrer">Repo を開く</a>
-          <a class="btn" href="https://github.com/naniwa-danshi/uptime-test/settings/pages" target="_blank" rel="noreferrer">Pages 設定</a>
+          <a class="btn" href="https://github.com/naniwa-danshi/uptime-test" target="_blank" rel="noreferrer">Repo</a>
+          <a class="btn" href="https://github.com/naniwa-danshi/uptime-test/settings/pages" target="_blank" rel="noreferrer">Pages設定</a>
         </div>
       </div>
 
       <div class="card">
-        <h2 style="margin:0 0 8px;font-size:16px;">簡易ヘルスチェック（JS）</h2>
-        <p style="margin:0 0 10px;color:var(--muted);line-height:1.6;">
-          JavaScript が動く環境では、ページ読み込み時に <code>document</code> 情報を表示します。
-          （監視の判定はサーバ側のHTTP到達性なので、この表示は補助です）
+        <div class="badge">How to simulate DOWN</div>
+        <p style="margin:10px 0 0;color:var(--muted);line-height:1.7;">
+          監視テストで「落ちた状態」を作るには、GitHub の <b>Settings → Pages</b> で <b>Unpublish</b> する
+          （または公開元を外して404にする）→ 通知確認 → 再公開、の流れです。
         </p>
-        <div class="kvs">
-          <div class="kv"><span>Document title</span><b class="mono" id="title">-</b></div>
-          <div class="kv"><span>User agent</span><b class="mono" id="ua" style="word-break:break-all;">-</b></div>
-        </div>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> <span class="mono">naniwa-danshi.github.io/uptime-test</span></div>
+      <div>© <span id="year"></span> naniwa-danshi.github.io/uptime-test</div>
     </footer>
   </div>
 
   <script>
     const now = new Date();
     const pad = (n)=>String(n).padStart(2,"0");
-    const fmt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-    document.getElementById("now").textContent = fmt;
+    document.getElementById("now").textContent =
+      `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
     document.getElementById("url").textContent = location.href;
-    document.getElementById("title").textContent = document.title;
-    document.getElementById("ua").textContent = navigator.userAgent;
     document.getElementById("year").textContent = String(now.getFullYear());
   </script>
 </body>
