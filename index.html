@@ -1,5 +1,126 @@
 <!doctype html>
 <html lang="ja">
-  <head><meta charset="utf-8"><title>uptime test</title></head>
-  <body>OK</body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="GitHub Pages uptime test site" />
+  <title>Uptime Test</title>
+  <style>
+    :root{
+      --bg:#0b1020; --card:#121a33; --text:#e7ecff; --muted:#a9b3d6;
+      --ok:#34d399; --warn:#fbbf24; --line:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(52,211,153,.18), transparent 60%),
+                  radial-gradient(1000px 700px at 90% 30%, rgba(99,102,241,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 42px}
+    header{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+    .title{display:flex;flex-direction:column;gap:6px}
+    h1{margin:0;font-size:28px;letter-spacing:.2px}
+    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.35);
+      color:var(--text); padding:8px 12px;border-radius:999px;font-size:13px
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(52,211,153,.15)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
+    .card{
+      grid-column:span 12;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 12px 30px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    @media (min-width:720px){
+      .card.half{grid-column:span 6}
+      .card.third{grid-column:span 4}
+    }
+    .kvs{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0 0}
+    .kv{display:flex;justify-content:space-between;gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:rgba(0,0,0,.12)}
+    .kv b{font-weight:600}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px}
+    a{color:#c7d2fe;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;border:1px solid var(--line);
+      background:rgba(255,255,255,.04); color:var(--text)
+    }
+    footer{margin-top:18px;color:var(--muted);font-size:12.5px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Uptime Test</h1>
+        <p class="sub">監視通知の動作確認用（GitHub Pages）</p>
+      </div>
+      <div class="pill" id="statusPill" title="このページが表示できていれば到達できています">
+        <span class="dot" aria-hidden="true"></span>
+        <span><b>OK</b> - Reachable</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card half">
+        <h2 style="margin:0 0 8px;font-size:16px;">現在の情報</h2>
+        <div class="kvs">
+          <div class="kv"><span>表示時刻</span><b class="mono" id="now">-</b></div>
+          <div class="kv"><span>URL</span><b class="mono" id="url">-</b></div>
+          <div class="kv"><span>目的</span><b>到達性（HTTP）の確認</b></div>
+        </div>
+      </div>
+
+      <div class="card half">
+        <h2 style="margin:0 0 8px;font-size:16px;">操作メモ</h2>
+        <p style="margin:0;color:var(--muted);line-height:1.6;">
+          失敗通知を試すには、GitHub の <b>Settings → Pages</b> で <b>Unpublish</b> するか、
+          公開元 Branch を外して 404 を発生させます。復旧は Pages を再公開して再デプロイします。
+        </p>
+        <div class="btns">
+          <a class="btn" href="https://github.com/naniwa-danshi/uptime-test" target="_blank" rel="noreferrer">Repo を開く</a>
+          <a class="btn" href="https://github.com/naniwa-danshi/uptime-test/settings/pages" target="_blank" rel="noreferrer">Pages 設定</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 8px;font-size:16px;">簡易ヘルスチェック（JS）</h2>
+        <p style="margin:0 0 10px;color:var(--muted);line-height:1.6;">
+          JavaScript が動く環境では、ページ読み込み時に <code>document</code> 情報を表示します。
+          （監視の判定はサーバ側のHTTP到達性なので、この表示は補助です）
+        </p>
+        <div class="kvs">
+          <div class="kv"><span>Document title</span><b class="mono" id="title">-</b></div>
+          <div class="kv"><span>User agent</span><b class="mono" id="ua" style="word-break:break-all;">-</b></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> <span class="mono">naniwa-danshi.github.io/uptime-test</span></div>
+    </footer>
+  </div>
+
+  <script>
+    const now = new Date();
+    const pad = (n)=>String(n).padStart(2,"0");
+    const fmt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    document.getElementById("now").textContent = fmt;
+    document.getElementById("url").textContent = location.href;
+    document.getElementById("title").textContent = document.title;
+    document.getElementById("ua").textContent = navigator.userAgent;
+    document.getElementById("year").textContent = String(now.getFullYear());
+  </script>
+</body>
 </html>
